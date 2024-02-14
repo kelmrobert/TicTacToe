@@ -3,7 +3,7 @@
 </script>
 
 <template>
-
+O
 </template>
 
 <style scoped>
