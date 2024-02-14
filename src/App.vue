@@ -16,16 +16,27 @@ const winCombinations = {
 }
 
 let gameStarted = ref(true);
-let xValues = ref([1,2,3]);
-let oValues = ref([5]);
+let xValues = ref([]);
+let oValues = ref([]);
+let player1 = ref(true);
 
 function startGame(){
     gameStarted.value = true;
-    console.log('Game started');
 }
 
 function handleCellClick(id) {
-    console.log('Cell clicked', id);
+
+    if(xValues.value.includes(id) || oValues.value.includes(id)) {
+        return
+    }
+
+    if(player1) {
+        xValues.value.push(id)
+    } else {
+        oValues.value.push(id)
+    }
+
+    player1 = !player1
 }
 
 </script>
