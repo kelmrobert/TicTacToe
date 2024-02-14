@@ -1,6 +1,7 @@
 <script setup>
 
 import Grid from "@/components/Grid.vue";
+import Welcome from "@/components/Welcome.vue";
 
 const winCombinations = {
   0: [1,2,3],
@@ -13,10 +14,15 @@ const winCombinations = {
   7: [3,5,7],
 }
 
+let gameStarted = false;
+
 </script>
 
 <template>
-    <div class="container">
+    <div class="" v-if="!gameStarted">
+        <Welcome />
+    </div>
+    <div class="container" v-if="gameStarted">
         <Grid />
     </div>
 </template>
