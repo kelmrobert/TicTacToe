@@ -1,5 +1,6 @@
 <script setup>
-
+import 'bootstrap';
+import { ref } from 'vue';
 import Grid from "@/components/Grid.vue";
 import Welcome from "@/components/Welcome.vue";
 
@@ -14,7 +15,12 @@ const winCombinations = {
   7: [3,5,7],
 }
 
-let gameStarted = false;
+let gameStarted = ref(false);
+
+function startGame(){
+    gameStarted.value = true;
+    console.log('Game started');
+}
 
 </script>
 
@@ -22,7 +28,7 @@ let gameStarted = false;
     <div class="container">
         <div class="justify-content-center align-items-center">
             <div v-if="!gameStarted">
-                <Welcome />
+                <Welcome @start-game="startGame"/>
             </div>
             <div v-if="gameStarted">
                 <Grid />
