@@ -1,12 +1,24 @@
 <script setup>
-
+import GridCell from "@/components/GridCell.vue";
 import Grid from "@/components/Grid.vue";
+
+const winCombinations = [
+  [1,2,3],
+  [4,5,6],
+  [7,8,9],
+  [1,4,7],
+  [2,5,8],
+  [3,6,9],
+  [1,5,9],
+  [3,5,7],
+]
 </script>
 
 <template>
-  <Grid/>
+  <Grid></Grid>
 </template>
 
 <style scoped>
+
 
 </style>
