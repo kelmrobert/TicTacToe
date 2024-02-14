@@ -2,14 +2,20 @@
 import Cross from "@/components/Cross.vue";
 import Circle from "@/components/Circle.vue";
 
+const emit = defineEmits(['cellClicked']);
+
 const props = defineProps({
     id: Number,
     icon: String,
 });
+
+function handleClick(){
+    emit('cellClicked', props.id);
+}
 </script>
 
 <template>
-    <div class="square">
+    <div class="square" @click="handleClick">
         <Cross v-if="icon ===  'x'"/>
         <Circle v-if="icon === 'o'"/>
     </div>
