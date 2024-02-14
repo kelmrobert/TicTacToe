@@ -19,6 +19,7 @@ let gameStarted = ref(true);
 let xValues = ref([]);
 let oValues = ref([]);
 let player1 = ref(true);
+let player1Win = ref();
 
 function startGame(){
     gameStarted.value = true;
@@ -36,7 +37,34 @@ function handleCellClick(id) {
         oValues.value.push(id)
     }
 
+    checkWinner()
+
     player1 = !player1
+}
+
+function checkWinner(){
+
+    for (let i = 0; i < Object.keys(winCombinations).length; i++) {
+        let winCombination = winCombinations[i]
+        let xCount = 0
+        let oCount = 0
+
+        for (let j = 0; j < winCombination.length; j++) {
+            if(xValues.value.includes(winCombination[j])) {
+                xCount++
+            } else if(oValues.value.includes(winCombination[j])) {
+                oCount++
+            }
+        }
+
+        if(xCount === 3) {
+            player1Win.value = true
+        } else if(oCount === 3) {
+            player1Win.value = false
+        }
+
+        // TODO DO SOMETHING
+    }
 }
 
 </script>
