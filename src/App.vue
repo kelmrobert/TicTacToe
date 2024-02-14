@@ -1,5 +1,7 @@
 <script setup>
 
+import Grid from "@/components/Grid.vue";
+
 const winCombinations = {
   0: [1,2,3],
   1: [4,5,6],
@@ -14,7 +16,9 @@ const winCombinations = {
 </script>
 
 <template>
-
+    <div class="container">
+        <Grid />
+    </div>
 </template>
 
 <style scoped>
