@@ -1,9 +1,15 @@
 <script setup>
 
+  defineProps({
+    id: {
+      type: Number
+    }
+  })
+
 </script>
 
 <template>
-  <div class="grid-item">ICON HERE</div>
+  <div class="grid-item">{{ id }}</div>
 </template>
 
 <style scoped>
