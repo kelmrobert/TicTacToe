@@ -24,6 +24,10 @@ function startGame(){
     console.log('Game started');
 }
 
+function handleCellClick(id) {
+    console.log('Cell clicked', id);
+}
+
 </script>
 
 <template>
@@ -33,7 +37,7 @@ function startGame(){
                 <Welcome @start-game="startGame"/>
             </div>
             <div v-if="gameStarted">
-                <Grid :xValues="xValues" :oValues="oValues" />
+                <Grid :xValues="xValues" :oValues="oValues" @cellClicked="handleCellClick" />
             </div>
         </div>
     </div>
