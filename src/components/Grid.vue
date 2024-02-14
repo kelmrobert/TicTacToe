@@ -1,6 +1,23 @@
 <script setup>
-
 import GridCell from "@/components/GridCell.vue";
+
+defineProps({
+  xValues: {
+    type: Array,
+    required: true
+  },
+  oValues: {
+    type: Array,
+    required: true
+  }
+})
+
+const emit = defineEmits(['cellClicked'])
+
+const handleCellClick = (id) => {
+  console.log(id)
+  emit('cellClicked', id)
+}
 </script>
 
 <template>
@@ -8,15 +25,15 @@ import GridCell from "@/components/GridCell.vue";
     <div class="row justify-content-center">
       <div class="col-4">
         <div class="grid-container">
-          <GridCell :id="1"/>
-          <GridCell :id="2"/>
-          <GridCell :id="3"/>
-          <GridCell :id="4"/>
-          <GridCell :id="5"/>
-          <GridCell :id="6"/>
-          <GridCell :id="7"/>
-          <GridCell :id="8"/>
-          <GridCell :id="9"/>
+          <GridCell :id="1" :xValues="xValues" :oValues="oValues" @cellClicked="handleCellClick"/>
+          <GridCell :id="2" :xValues="xValues" :oValues="oValues" @cellClicked="handleCellClick"/>
+          <GridCell :id="3" :xValues="xValues" :oValues="oValues" @cellClicked="handleCellClick"/>
+          <GridCell :id="4" :xValues="xValues" :oValues="oValues" @cellClicked="handleCellClick"/>
+          <GridCell :id="5" :xValues="xValues" :oValues="oValues" @cellClicked="handleCellClick"/>
+          <GridCell :id="6" :xValues="xValues" :oValues="oValues" @cellClicked="handleCellClick"/>
+          <GridCell :id="7" :xValues="xValues" :oValues="oValues" @cellClicked="handleCellClick"/>
+          <GridCell :id="8" :xValues="xValues" :oValues="oValues" @cellClicked="handleCellClick"/>
+          <GridCell :id="9" :xValues="xValues" :oValues="oValues" @cellClicked="handleCellClick"/>
         </div>
       </div>
     </div>

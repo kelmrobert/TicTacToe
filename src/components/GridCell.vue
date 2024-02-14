@@ -1,15 +1,33 @@
 <script setup>
+import { ref } from 'vue';
+  import Cross from "@/components/Cross.vue";
+  import Circle from "@/components/Circle.vue";
 
-  defineProps({
+const props = defineProps({
     id: {
-      type: Number
+      type: Number,
+      required: true
+    },
+    xValues: {
+      type: Array
+    },
+    oValues: {
+      type: Array
     }
   })
 
+const emit = defineEmits(['cellClicked'])
+
+const handleClick = () => {
+  emit('cellClicked', props.id)
+}
 </script>
 
 <template>
-  <div class="grid-item">{{ id }}</div>
+  <div class="grid-item" @click="handleClick">
+    <Cross v-if="xValues.includes(id)"/>
+    <Circle v-if="oValues.includes(id)"/>
+  </div>
 </template>
 
 <style scoped>
