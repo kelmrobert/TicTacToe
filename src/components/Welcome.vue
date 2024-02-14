@@ -10,7 +10,7 @@
 
 <template>
     <h1 class="text-primary-emphasis">Ready to Loose?</h1>
-    <button class="btn btn-outline-success">Ich versuche mein Glück</button>
+    <button class="btn btn-outline-success">Spiel starten</button>
     <button class="btn btn-outline-danger" @mouseover="changeLocation">Hilfe</button>
 </template>
 
