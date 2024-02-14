@@ -19,11 +19,15 @@ let gameStarted = false;
 </script>
 
 <template>
-    <div class="" v-if="!gameStarted">
-        <Welcome />
-    </div>
-    <div class="container" v-if="gameStarted">
-        <Grid />
+    <div class="container">
+        <div class="justify-content-center align-items-center">
+            <div v-if="!gameStarted">
+                <Welcome />
+            </div>
+            <div v-if="gameStarted">
+                <Grid />
+            </div>
+        </div>
     </div>
 </template>
 
