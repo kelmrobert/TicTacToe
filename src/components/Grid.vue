@@ -1,7 +1,6 @@
 <script setup>
-import GridCell from "@/components/GridCell.vue";
-
-const emit = defineEmits(['cellClicked']);
+import GridCell from "@/components/GridCell.vue"
+const emit = defineEmits(['cellClicked'])
 
 // Define props
 const props = defineProps({
@@ -11,8 +10,7 @@ const props = defineProps({
 
 // Define methods
 function handleClick(id){
-    emit('cellClicked', id);
-    console.log('Cell clicked', id);
+    emit('cellClicked', id)
 }
 
 </script>
