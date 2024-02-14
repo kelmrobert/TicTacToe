@@ -15,7 +15,9 @@ const winCombinations = {
   7: [3,5,7],
 }
 
-let gameStarted = ref(false);
+let gameStarted = ref(true);
+let xValues = ref([1,2,3]);
+let oValues = ref([5]);
 
 function startGame(){
     gameStarted.value = true;
@@ -31,7 +33,7 @@ function startGame(){
                 <Welcome @start-game="startGame"/>
             </div>
             <div v-if="gameStarted">
-                <Grid />
+                <Grid :xValues="xValues" :oValues="oValues" />
             </div>
         </div>
     </div>

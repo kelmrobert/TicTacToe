@@ -1,11 +1,17 @@
 <script setup>
-
 import Cross from "@/components/Cross.vue";
+import Circle from "@/components/Circle.vue";
+
+const props = defineProps({
+    id: Number,
+    icon: String,
+});
 </script>
 
 <template>
     <div class="square">
-        <Cross />
+        <Cross v-if="icon ===  'x'"/>
+        <Circle v-if="icon === 'o'"/>
     </div>
 </template>
 
