@@ -1,9 +1,10 @@
 <script setup>
 import 'bootstrap';
-import { ref } from 'vue';
+import {onMounted, ref} from 'vue';
 import Grid from "@/components/Grid.vue";
 import Welcome from "@/components/Welcome.vue";
 import Title from "@/components/Title.vue";
+import GameOver from "@/components/GameOver.vue";
 
 const winCombinations = {
   0: [1,2,3],
@@ -22,6 +23,7 @@ let oValues = ref([]);
 let player1 = ref(true);
 let player1Win = ref();
 let gameOver = ref(false);
+let player1start = ref(true);
 
 function startGame(){
     gameStarted.value = true;
@@ -30,7 +32,11 @@ function startGame(){
 function handleCellClick(id) {
 
     if(xValues.value.includes(id) || oValues.value.includes(id)) {
-        return
+        if(player1.value && oValues.value.includes(id)) {
+            oValues.value = oValues.value.filter(value => value !== id)
+         } else {
+            return
+         }
     }
 
     if(player1.value) {
@@ -40,6 +46,7 @@ function handleCellClick(id) {
     }
 
     checkWinner()
+    checkDraw()
 
     player1.value = !player1.value
 }
@@ -69,11 +76,27 @@ function checkWinner(){
     }
 }
 
+function checkDraw(){
+    if(xValues.value.length + oValues.value.length === 9) {
+        player1Win.value = null
+        gameOver.value = true
+    }
+}
+
+function restartGame() {
+    xValues.value = []
+    oValues.value = []
+    player1.value = !player1start.value
+    player1Win.value = null
+    gameOver.value = false
+}
+
 </script>
 
 <template>
-    <div class="container">
-        <div class="justify-content-center align-items-center">
+    <div class="container align-items-center">
+        <div class="justify-content-center">
+            <GameOver v-if="gameOver" @restart="restartGame"/>
             <div v-if="!gameStarted">
                 <Welcome @start-game="startGame"/>
             </div>
