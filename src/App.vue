@@ -42,6 +42,9 @@ function handleCellClick(id) {
     if(player1.value) {
         xValues.value.push(id)
     } else {
+        if(possibleWin(id)){
+            return;
+        }
         oValues.value.push(id)
     }
 
@@ -49,6 +52,27 @@ function handleCellClick(id) {
     checkDraw()
 
     player1.value = !player1.value
+}
+
+function possibleWin(id){
+    let oValuesCopy = oValues.value.slice()
+    oValuesCopy.push(id)
+
+    for (let i = 0; i < Object.keys(winCombinations).length; i++) {
+        let winCombination = winCombinations[i]
+        let oCount = 0
+
+        for (let j = 0; j < winCombination.length; j++) {
+            if(oValuesCopy.includes(winCombination[j])) {
+                oCount++
+            }
+        }
+
+        if(oCount === 3) {
+            return true
+        }
+    }
+    return false
 }
 
 function checkWinner(){
