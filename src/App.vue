@@ -3,6 +3,7 @@ import 'bootstrap';
 import { ref } from 'vue';
 import Grid from "@/components/Grid.vue";
 import Welcome from "@/components/Welcome.vue";
+import Title from "@/components/Title.vue";
 
 const winCombinations = {
   0: [1,2,3],
@@ -15,7 +16,7 @@ const winCombinations = {
   7: [3,5,7],
 }
 
-let gameStarted = ref(true);
+let gameStarted = ref(false);
 let xValues = ref([]);
 let oValues = ref([]);
 let player1 = ref(true);
@@ -31,7 +32,7 @@ function handleCellClick(id) {
         return
     }
 
-    if(player1) {
+    if(player1.value) {
         xValues.value.push(id)
     } else {
         oValues.value.push(id)
@@ -39,7 +40,7 @@ function handleCellClick(id) {
 
     checkWinner()
 
-    player1 = !player1
+    player1.value = !player1.value
 }
 
 function checkWinner(){
@@ -75,8 +76,9 @@ function checkWinner(){
             <div v-if="!gameStarted">
                 <Welcome @start-game="startGame"/>
             </div>
-            <div v-if="gameStarted">
-                <Grid :xValues="xValues" :oValues="oValues" @cellClicked="handleCellClick" />
+            <div>
+                <Title v-if="gameStarted" :player1="player1"/>
+                <Grid v-if="gameStarted" :xValues="xValues" :oValues="oValues" @cellClicked="handleCellClick" />
             </div>
         </div>
     </div>
