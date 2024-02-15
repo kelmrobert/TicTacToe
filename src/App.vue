@@ -21,6 +21,7 @@ let xValues = ref([]);
 let oValues = ref([]);
 let player1 = ref(true);
 let player1Win = ref();
+let gameOver = ref(false);
 
 function startGame(){
     gameStarted.value = true;
@@ -60,11 +61,11 @@ function checkWinner(){
 
         if(xCount === 3) {
             player1Win.value = true
+            gameOver.value = true
         } else if(oCount === 3) {
             player1Win.value = false
+            gameOver.value = true
         }
-
-        // TODO DO SOMETHING
     }
 }
 
