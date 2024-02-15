@@ -118,15 +118,17 @@ function restartGame() {
 </script>
 
 <template>
-    <div class="container align-items-center">
-        <div class="justify-content-center">
-            <GameOver v-if="gameOver" @restart="restartGame"/>
-            <div v-if="!gameStarted">
-                <Welcome @start-game="startGame"/>
-            </div>
-            <div>
-                <Title v-if="gameStarted" :player1="player1"/>
-                <Grid v-if="gameStarted" :xValues="xValues" :oValues="oValues" @cellClicked="handleCellClick" />
+    <div class="container">
+        <div class="d-flex justify-content-center align-items-center vh-100">
+            <div class="text-center">
+                <GameOver v-if="gameOver" @restart="restartGame"/>
+                <div v-if="!gameStarted">
+                    <Welcome @start-game="startGame"/>
+                </div>
+                <div v-if="gameStarted">
+                    <Title :player1="player1"/>
+                    <Grid :xValues="xValues" :oValues="oValues" @cellClicked="handleCellClick" />
+                </div>
             </div>
         </div>
     </div>
