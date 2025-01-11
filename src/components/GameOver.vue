@@ -13,7 +13,8 @@ function restartGame() {
 <template>
     <div class="backdrop">
         <div class="game-over-box">
-            <h1 class="mb-5">Robert hat gewonnen!</h1>
+            <h1 class="mb-4">Player 1 won!</h1>
+            <p class="mb-4">This result is based solely on the course of<br> the game and the unique abilities of player 1.</p>
             <button @click="restartGame" class="btn btn-primary">Start Again</button>
         </div>
     </div>
