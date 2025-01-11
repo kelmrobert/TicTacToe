@@ -17,11 +17,11 @@
 
 <template>
     <div>
-        <h1 class="text-primary-emphasis">Stelle Dich der unmöglichen Herausforderung!</h1>
+        <h1 class="text-primary-emphasis">Can you beat your friend? Find out!</h1>
     </div>
     <div class="mt-5">
-        <button class="btn btn-outline-success me-3" @click="handleStartGame">Spiel starten</button>
-        <button class="btn btn-outline-danger" @mouseover="changeLocation">Hilfe</button>
+        <button class="btn btn-outline-success me-3" @click="handleStartGame">Start Game</button>
+        <button class="btn btn-outline-danger" @mouseover="changeLocation">Instructions</button>
     </div>
 </template>
 
